@@ -1,0 +1,1 @@
+var child=React.createClass({displayName:"child",render:function(){return React.createElement("div",null,"and this is the ",React.createElement("b",null,this.props.name),".")}});
