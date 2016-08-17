@@ -1,0 +1,33 @@
+{
+  "name": "materialui",
+  "version": "1.0.0",
+  "description": "react material-ui",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-if": "^2.0.1",
+    "gulp-react": "^3.1.0",
+    "gulp-uglify": "^2.0.0",
+    "gulp-useref": "^3.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0wade/materialui.git"
+  },
+  "keywords": [
+    "material-ui",
+    "react",
+    "gulp",
+    "browserify"
+  ],
+  "author": "me",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/0wade/materialui/issues"
+  },
+  "homepage": "https://github.com/0wade/materialui#readme"
+}
