@@ -1,0 +1,1 @@
+"use strict";function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}var _RaisedButton=require("material-ui/RaisedButton"),_RaisedButton2=_interopRequireDefault(_RaisedButton),MyAwesomeReactComponent=function(){return React.createElement(_RaisedButton2.default,{label:"Default"})};

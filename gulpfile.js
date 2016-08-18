@@ -14,26 +14,20 @@
         , DEST: 'app/dist'
     };
 
-    //获取js的源文件，把jsx转换成js，放到目标文件夹
-    gulp.task('transform', function () {
-        gulp.src(path.JS)
-        .pipe(react())
+    //获取app/src/build/ js的源文件,压缩,放到目标文件夹
+    gulp.task('miniJs', ['replaceHTML'],function () {
+        gulp.src('app/src/build/*.js')
         .pipe(uglify())
         .pipe(gulp.dest(path.DEST_SRC))
     })
 
-    //发布到生产环境的task
-    gulp.task('build',['transform']);
-
     //app/src/*.html中的js,合并压缩成一个js,替换app/src/*html中的js并且输出到app/dist
-    gulp.task('replaceHTML', function(){
+    gulp.task('replaceHTML', ['babel'],function(){
        gulp.src(path.HTML)
        .pipe(useref())
-       .pipe(gulpif('*.js',react()))
-       .pipe(gulpif('*.js',uglify()))
        .pipe(gulp.dest(path.DEST));
     });
-
+    
     gulp.task('babel', function () {
         return gulp.src(path.JS)
         .pipe(babel({
@@ -45,8 +39,11 @@
         .pipe(gulp.dest('app/src/build'));
     });
 
+    //发布到生产环境的task
+    gulp.task('build',['miniJs']);
+
     //把发布到生产环境之前的所有任务再提炼
-    gulp.task('production', ['replaceHTML', 'build']);
+    gulp.task('production', ['build']);
 
     //观察app/src/*.html和js文件的变化，执行以上的2个任务
     gulp.task('watch', function () {
