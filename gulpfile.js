@@ -3,7 +3,7 @@
     var uglify = require('gulp-uglify');
     var react = require('gulp-react');
     var gulpif = require('gulp-if');
-
+    var babel = require('gulp-babel');
     var path = {
         HTML: 'app/src/index.html'
         , ALL: ['app/src/js/*.js', 'app/src/js/**/*.js', 'app/src/index.html']
@@ -32,6 +32,17 @@
        .pipe(gulpif('*.js',react()))
        .pipe(gulpif('*.js',uglify()))
        .pipe(gulp.dest(path.DEST));
+    });
+
+    gulp.task('babel', function () {
+        return gulp.src(path.JS)
+        .pipe(babel({
+            presets: ['react']
+        }))
+        .pipe(babel({
+            presets: ['es2015']
+        }))
+        .pipe(gulp.dest('app/src/build'));
     });
 
     //把发布到生产环境之前的所有任务再提炼
